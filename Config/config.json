@@ -1,0 +1,12 @@
+{
+    "system_name" : "Sístema de testes",
+    "database" : {
+        "host" : "127.0.0.1",
+        "port" : "",
+        "database" : "blog",
+        "username" : "dbtester",
+        "password" : "123456"
+    },
+    "save_log_messages" : true,
+    "run_build_tasks_on_request" : true,
+}
