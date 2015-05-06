@@ -1,14 +1,12 @@
 <?php
+
 namespace Controller;
-use \Slim\Slim;
-use \Models\DAO\UserDAO;
-class PagesController{
-    public static function initRoutes(){
-        $slimApp = Slim::getInstance();
-        $slimApp->get('/', get_class().'::index');
+
+class PagesController extends Controller{
+    public function initRoutes(){
+        $this->app->get('/', $this->action('index'));
     }
-    public static function index(){
-        $slimApp = Slim::getInstance();
-        $slimApp->render('index.twig.html');
+    public function index(){
+        $this->app->render('index.twig.html');
     }
 }

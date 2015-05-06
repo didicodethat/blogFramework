@@ -1,0 +1,9 @@
+{% extends "templates/main.twig.html" %}
+
+{% block body %}
+    <form method="post" action="/salvar/usuario">
+        <p>Username: <input name="username"></p>
+        <p>Password: <input name="password"></p>
+        <p><input type="submit" value="cadastrar usuário"/></p>
+    </form>
+{% endblock %}

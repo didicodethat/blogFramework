@@ -1,9 +1,12 @@
 <?php
 
 namespace Models\DAO;
+
 use \Config\Config;
 
 class DAO{
+    public $tableName = '';
+
     public function __construct(){
         $this->conex = Config::getDatabaseConnection();
     }

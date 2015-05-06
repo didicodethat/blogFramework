@@ -1,6 +1,6 @@
 <?php
 
-namespace \Models\DTO;
+namespace Models\DTO;
 
 class PostDTO{
     private $id;
@@ -19,7 +19,7 @@ class PostDTO{
         return $this;
     }
     public function getTitle(){
-        return $this->;
+        return $this->title;
     }
     public function setCallMessage($callMessage){
         $this->callMessage = $callMessage;

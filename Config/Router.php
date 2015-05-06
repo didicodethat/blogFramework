@@ -1,23 +1,21 @@
 <?php
 namespace Config;
 
-use \Slim\Slim;
-use \Controller\PagesController;
 use \Middleware\BuilderMiddleware;
 
 class Router{
-    private static $slimApp;
-    public static function init(){
-            self::initMiddlewares();
-        self::initControllers();
+    public static function init(\Slim\Slim $slimApp){
+        self::initMiddlewares($slimApp);
+        self::initControllers($slimApp);
     }
-    public static function initMiddlewares(){
-        $slimApp = Slim::getInstance();
+    public static function initMiddlewares(\Slim\Slim $slimApp){
         if(Config::runsBuildTasksOnRequests()){
             $slimApp->add(new BuilderMiddleware());
         }
     }
-    public static function initControllers(){
-        PagesController::initRoutes();
+    public static function initControllers(\Slim\Slim $slimApp){
+        new \Controller\PagesController($slimApp);
+        new \Controller\UserController($slimApp);
+        new \Controller\PostsController($slimApp);
     }
 }

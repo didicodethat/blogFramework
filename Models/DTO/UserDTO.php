@@ -1,6 +1,8 @@
 <?php 
+
 namespace Models\DTO;
-use Helper\SecurityHelper;
+
+use \Helper\SecurityHelper;
 
 class UserDTO{
     private $id;
@@ -18,7 +20,7 @@ class UserDTO{
     }
     public function setUsername($username){
         $this->username = $username;
-        return $username;
+        return $this;
     }
     public function getPassword(){
         return SecurityHelper::hashPassword($this->password);

@@ -3,7 +3,7 @@ require "../autoload.php";
 use \Config\Config;
 class ConfigTests extends PHPUnit_Framework_TestCase{
     public function testConfigDependencies(){
-        $this->assert(Config::getConfig('system_name'));
+        $this->assertTrue(!!Config::getConfig('system_name'));
     }
     public function testDatabaseSettings(){
         $settings = Config::getDatabaseSettings();

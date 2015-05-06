@@ -8,5 +8,5 @@
         "password" : "123456"
     },
     "save_log_messages" : true,
-    "run_build_tasks_on_request" : true,
+    "run_build_tasks_on_request" : true
 }

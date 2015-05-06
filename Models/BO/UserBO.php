@@ -1,27 +1,36 @@
 <?php
+
 namespace Models\BO;
-use Models\DAO\UserDAO;
-use Models\DTO\UserDTO;
+
+use \Models\DTO\UserDTO;
+
 class UserBO extends BO{
+    
+    public $userDAO;
+
+    public function __construct(\Models\DAO\DAO $userDAO){
+        $this->userDAO = $userDAO;
+        $this->conex = $userDAO->conex;
+    }
+
     public function save(UserDTO $userDTO){
-        $userDAO = new UserDAO();
-        $userDAO->conex->beginTransaction();
+        $this->conex->beginTransaction();
         try{
-            $userDAO->save($userDTO);
-        }catch(Exception $ex){
-            $userDAO->conex->rollBack();
-            throw new Exception($ex->getMessage());
+            $this->userDAO->save($userDTO);
+            $this->conex->commit();
+        }catch(\Exception $ex){
+            throw new \Exception($ex->getMessage());
         }
     }
 
     public function login(UserDTO $userDTO){
-        $userDAO = new UserDAO();
-        $userDAO->conex->beginTransaction();
+        $this->conex->beginTransaction();
         try{
-            $userDAO->validateLogin($userDTO);
-        }catch(Exception $ex){
-            $userDAO->conex->rollBack();
-            throw new Exception($ex->getMessage());
+            $this->userDAO->validateLogin($userDTO);
+        }catch(\Exception $ex){
+            $this->conex->rollBack();
+            throw new \Exception($ex->getMessage());
         }
     }
+    
 }

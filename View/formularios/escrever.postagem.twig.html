@@ -1,0 +1,11 @@
+{% extends "templates/main.twig.html" %}
+
+{% block body %}
+    <form method="post" action="/salvar/postagem">
+        <p>Título: <input name="title"></p>
+        <p>Mensagem de Chamado (subtítulo): <input name="call_message"></p>
+        <p>Mensagem completa:</p>
+        <p><textarea name="message"></textarea></p>
+        <input type="submit" value="Enviar">
+    </form>
+{% endblock %}
